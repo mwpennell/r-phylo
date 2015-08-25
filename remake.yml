@@ -18,10 +18,15 @@ targets:
   all:
     depends:
       - vignettes/intro.html
+      - vignettes/models.html
 
   intro:
     depends:
       - vignettes/intro.html
+
+  models:
+    depends:
+      - vignettes/models.md
 
 ## Intro
   vignettes/intro.html:
@@ -30,3 +35,11 @@ targets:
     knitr: vignette
   vignettes/intro.Rmd:
     command: sowsear("vignettes/intro.R")
+
+## Model fitting
+  vignettes/models.html:
+    command: render("vignettes/models.md", quiet=TRUE)
+  vignettes/models.md:
+    knitr: vignette
+  vignettes/models.Rmd:
+    command: sowsear("vignettes/models.R")
