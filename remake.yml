@@ -1,0 +1,32 @@
+#sources:
+#  - R
+
+packages:
+  - ape
+  - diversitree
+  - geiger
+  - sowsear
+  - knitr
+  - rmarkdown
+
+knitr_options:
+  vignette:
+    auto_figure_prefix: true
+    chdir: true
+
+targets:
+  all:
+    depends:
+      - vignettes/intro.html
+
+  intro:
+    depends:
+      - vignettes/intro.html
+
+## Intro
+  vignettes/intro.html:
+    command: render("vignettes/intro.md", quiet=TRUE)
+  vignettes/intro.md:
+    knitr: vignette
+  vignettes/intro.Rmd:
+    command: sowsear("vignettes/intro.R")
